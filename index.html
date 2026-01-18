@@ -1,11 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>SASSY Screening Test</title>
+  <title>SASSY Screening</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+      line-height: 1.6;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    .question {
+      margin-bottom: 25px;
+    }
+    button {
+      padding: 10px 18px;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
-  <h1>It works 🎉</h1>
-  <p>If you can see this page, GitHub Pages is working.</p>
+
+<h1>Short Screening Questionnaire</h1>
+
+<p>Please answer the following questions. Your responses will be used solely to determine eligibility for the study.</p>
+
+<form id="sassyForm">
+
+  <div class="question">
+    <strong>1. How important is the issue of global warming to you personally?</strong><br>
+    <label><input type="radio" name="q1" value="5" required> Extremely important</label><br>
+    <label><input type="radio" name="q1" value="4"> Very important</label><br>
+    <label><input type="radio" name="q1" value="3"> Somewhat important</label><br>
+    <label><input type="radio" name="q1" value="2"> Not too important</label><br>
+    <label><input type="radio" name="q1" value="1"> Not at all important</label>
+  </div>
+
+  <div class="question">
+    <strong>2. How worried are you about global warming?</strong><br>
+    <label><input type="radio" name="q2" value="4" required> Very worried</label><br>
+    <label><input type="radio" name="q2" value="3"> Somewhat worried</label><br>
+    <label><input type="radio" name="q2" value="2"> Not very worried</label><br>
+    <label><input type="radio" name="q2" value="1"> Not at all worried</label>
+  </div>
+
+  <div class="question">
+    <strong>3. How much do you think global warming will harm you personally?</strong><br>
+    <label><input type="radio" name="q3" value="4" required> A great deal</label><br>
+    <label><input type="radio" name="q3" value="3"> A moderate amount</label><br>
+    <label><input type="radio" name="q3" value="2"> Only a little</label><br>
+    <label><input type="radio" name="q3" value="1"> Not at all</label>
+  </div>
+
+  <div class="question">
+    <strong>4. How much do you think global warming will harm future generations of people?</strong><br>
+    <label><input type="radio" name="q4" value="4" required> A great deal</label><br>
+    <label><input type="radio" name="q4" value="3"> A moderate amount</label><br>
+    <label><input type="radio" name="q4" value="2"> Only a little</label><br>
+    <label><input type="radio" name="q4" value="1"> Not at all</label>
+  </div>
+
+  <button type="submit">Submit</button>
+
+</form>
+
+<script>
+  document.getElementById("sassyForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const q1 = document.querySelector('input[name="q1"]:checked').value;
+    const q2 = document.querySelector('input[name="q2"]:checked').value;
+    const q3 = document.querySelector('input[name="q3"]:checked').value;
+    const q4 = document.querySelector('input[name="q4"]:checked').value;
+
+    alert(
+      "Responses recorded:\n" +
+      "Q1: " + q1 + "\n" +
+      "Q2: " + q2 + "\n" +
+      "Q3: " + q3 + "\n" +
+      "Q4: " + q4
+    );
+  });
+</script>
+
 </body>
 </html>
+
