@@ -28,7 +28,7 @@
 
 <p>Please answer the following questions. Your responses will be used solely to determine eligibility for the study.</p>
 
-<form id="sassyForm">
+<div id="sassyForm">
 
   <div class="question">
     <strong>1. How important is the issue of global warming to you personally?</strong><br>
@@ -65,9 +65,9 @@
     <label><input type="radio" name="q4" value="5"> Don't know</label>
   </div>
 
-  <button type="submit">Submit</button>
+  <button type="button" id="submitBtn">Submit</button>
 
-</form>
+</div>
 
 <script>
   const lookupTable = {
@@ -572,18 +572,26 @@
     "5454": "Dismissive",
     "5455": "Doubtful"
   };
-  
-  const form = document.getElementById("sassyForm");
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
 
-    const q1 = document.querySelector('input[name="q1"]:checked').value;
-    const q2 = document.querySelector('input[name="q2"]:checked').value;
-    const q3 = document.querySelector('input[name="q3"]:checked').value;
-    const q4 = document.querySelector('input[name="q4"]:checked').value;
+  document.getElementById("submitBtn").addEventListener("click", function () {
 
-    const pattern = q1 + q2 + q3 + q4;
+    const q1El = document.querySelector('input[name="q1"]:checked');
+    const q2El = document.querySelector('input[name="q2"]:checked');
+    const q3El = document.querySelector('input[name="q3"]:checked');
+    const q4El = document.querySelector('input[name="q4"]:checked');
+
+    if (!q1El || !q2El || !q3El || !q4El) {
+      alert("Please answer all questions.");
+      return;
+    }
+
+    const pattern =
+      q1El.value +
+      q2El.value +
+      q3El.value +
+      q4El.value;
+
     const label = lookupTable[pattern];
 
     if (!label) {
@@ -600,6 +608,6 @@
     );
   });
 </script>
-
+  
 </body>
 </html>
