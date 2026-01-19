@@ -573,33 +573,31 @@
     "5455": "Doubtful"
   };
   
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("sassyForm");
+  const form = document.getElementById("sassyForm");
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-      const q1 = document.querySelector('input[name="q1"]:checked').value;
-      const q2 = document.querySelector('input[name="q2"]:checked').value;
-      const q3 = document.querySelector('input[name="q3"]:checked').value;
-      const q4 = document.querySelector('input[name="q4"]:checked').value;
+    const q1 = document.querySelector('input[name="q1"]:checked').value;
+    const q2 = document.querySelector('input[name="q2"]:checked').value;
+    const q3 = document.querySelector('input[name="q3"]:checked').value;
+    const q4 = document.querySelector('input[name="q4"]:checked').value;
 
-      const pattern = q1 + q2 + q3 + q4;
-      const label = lookupTable[pattern];
+    const pattern = q1 + q2 + q3 + q4;
+    const label = lookupTable[pattern];
 
-      if (!label) {
-        alert(
-          "Thank you for your interest.\n" +
-          "Your responses do not meet the eligibility criteria for this study."
-        );
-        return;
-      }
-
+    if (!label) {
       alert(
-        "Pattern: " + pattern + "\n" +
-        "Climate belief group: " + label
+        "Thank you for your interest.\n" +
+        "Your responses do not meet the eligibility criteria for this study."
       );
-    });
+      return;
+    }
+
+    alert(
+      "Pattern: " + pattern + "\n" +
+      "Climate belief group: " + label
+    );
   });
 </script>
 
