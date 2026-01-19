@@ -575,7 +575,6 @@
   };
   
   document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("sassyForm");
     const submitBtn = document.getElementById("submitBtn");
 
     submitBtn.addEventListener("click", function () {
@@ -598,6 +597,7 @@
       const pattern = q1 + q2 + q3 + q4;
       const label = lookupTable[pattern];
 
+      // 如果不在lookupTable中,提示不符合资格
       if (!label) {
         alert(
           "Thank you for your interest.\n" +
@@ -606,10 +606,8 @@
         return;
       }
 
-      alert(
-        "Pattern: " + pattern + "\n" +
-        "Climate belief group: " + label
-      );
+      // 如果在lookupTable中,只显示4位数字
+      alert(pattern);
     });
   });
 </script>
