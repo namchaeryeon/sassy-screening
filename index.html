@@ -70,7 +70,11 @@
 </div>
 
 <script>
-  const lookupTable = {
+  document.addEventListener("DOMContentLoaded", function () {
+
+    console.log("JS loaded"); // 👈 用来确认 JS 是否真的在跑
+
+    const lookupTable = {
     "1111": "Alarmed",
     "1112": "Alarmed",
     "1113": "Alarmed",
@@ -571,41 +575,48 @@
     "5453": "Doubtful",
     "5454": "Dismissive",
     "5455": "Doubtful"
-  };
+    };
 
+    const submitBtn = document.getElementById("submitBtn");
 
-  document.getElementById("submitBtn").addEventListener("click", function () {
-
-    const q1El = document.querySelector('input[name="q1"]:checked');
-    const q2El = document.querySelector('input[name="q2"]:checked');
-    const q3El = document.querySelector('input[name="q3"]:checked');
-    const q4El = document.querySelector('input[name="q4"]:checked');
-
-    if (!q1El || !q2El || !q3El || !q4El) {
-      alert("Please answer all questions.");
+    if (!submitBtn) {
+      alert("Submit button not found");
       return;
     }
 
-    const pattern =
-      q1El.value +
-      q2El.value +
-      q3El.value +
-      q4El.value;
+    submitBtn.addEventListener("click", function () {
 
-    const label = lookupTable[pattern];
+      const q1El = document.querySelector('input[name="q1"]:checked');
+      const q2El = document.querySelector('input[name="q2"]:checked');
+      const q3El = document.querySelector('input[name="q3"]:checked');
+      const q4El = document.querySelector('input[name="q4"]:checked');
 
-    if (!label) {
+      if (!q1El || !q2El || !q3El || !q4El) {
+        alert("Please answer all questions.");
+        return;
+      }
+
+      const pattern =
+        q1El.value +
+        q2El.value +
+        q3El.value +
+        q4El.value;
+
+      const label = lookupTable[pattern];
+
+      if (!label) {
+        alert(
+          "Thank you for your interest.\n" +
+          "Your responses do not meet the eligibility criteria for this study."
+        );
+        return;
+      }
+
       alert(
-        "Thank you for your interest.\n" +
-        "Your responses do not meet the eligibility criteria for this study."
+        "Pattern: " + pattern + "\n" +
+        "Climate belief group: " + label
       );
-      return;
-    }
-
-    alert(
-      "Pattern: " + pattern + "\n" +
-      "Climate belief group: " + label
-    );
+    });
   });
 </script>
   
